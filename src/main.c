@@ -17,7 +17,7 @@
 
 void crearUsuario(Usuario_t *u);
 int main(){
-	int id;
+	unsigned int id;
 	Usuario_t user;
 
 	
