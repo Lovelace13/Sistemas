@@ -1,1 +1,1 @@
-Mi primer hola mundo en C 
+Deber creacion de archivo Makefile con "c" y Herramienta "make" 
