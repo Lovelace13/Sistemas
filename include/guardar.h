@@ -7,4 +7,4 @@ guardar.h
 
 
 
-void guardar(Usuario_t *);
+void guardar(Usuario_t *, int *);

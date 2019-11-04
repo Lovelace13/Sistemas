@@ -76,8 +76,10 @@ int main(void){
 				printf("\n\n\n\n\n\n\n\n\n\nHOLAA");
 
 			}else{
+				users[c] = user;
+				c++;
 				salida = true;
-				guardar(users);
+				guardar(users,&c);
 				printf("Hasta la proxima XD\n\n");
 
 				return 0;
