@@ -22,16 +22,16 @@ void mostrarResultados(Usuario_t *u, char msg[]);
 char* mensajeError(int *err);
 
 
-char  response = 'S';
 
-int main(){
+int main(void){
 	int id;
 	Usuario_t user;
 	char *message;
-	char *pResponse;
-	pResponse = &response;
-
-	while(response == 'S' || response == 's'){
+	//char *pResponse;
+	int  response = 's';
+	//pResponse = &response;
+	
+	while(response == 's'){
 	printf("-------------------------------------------------------------------------\n");
 	printf("****************************Compilación con Make*************************\n");
 	printf("*********************************03/11/19********************************\n");
@@ -56,14 +56,26 @@ int main(){
 	int tipoError = (int)validar(&user);
 	crearUsuario(&user);
 	
-	printf("\n\n\n\n");
+	printf("\n\n\n\nHola");
 	//printf(mensajeError(&tipoError));
 	strcpy(message,mensajeError(&tipoError));
 	mostrarResultados(&user,message);
+
+	
+	
+	printf("\n\n");
+	printf("Desea ingresar otro usuario?(S/N):\t");
+	scanf("%d", response);	
+	printf("\n");
+	if(response == 's'){
+		printf("\n\n\n\n\n\n\n\n\n\n");
+	}else{
+		printf("Hasta la proxima XD\n\n");
+	}
 	
 		
-
 	}
+	
 }
 
 
@@ -118,16 +130,7 @@ void mostrarResultados(Usuario_t *u, char msg[]){
 	 *aqui va la salida del programa o nuevo ingreso
 	 * */
 
-	do{
-	printf("\n\n");
-	printf("Desea ingresar otro usuario?(S/N):\t");
-	scanf("%c\n", response);
-	}while(response == 'S' || response == 'N' || response == 's' || response == 'n' );
 	
-	if(response == 'S' || response == 's'){ printf("Hasta la proxima XD! ");}else{
-		printf("\n\n\n\n\n\n\n\n\n\n");
-	}
-
 }
 
 char *mensajeError(int *err){
