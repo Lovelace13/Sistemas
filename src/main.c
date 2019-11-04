@@ -12,7 +12,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdbool.h>
-#include"validar.h"
+#include<validar.h>
 #include<time.h>
 
 
@@ -20,14 +20,21 @@
 void crearUsuario(Usuario_t *u);
 void mostrarResultados(Usuario_t *u, char msg[]);
 char* mensajeError(int *err);
+
+
+char  response = 'S';
+
 int main(){
-	unsigned int id;
+	int id;
 	Usuario_t user;
 	char *message;
-	
+	char *pResponse;
+	pResponse = &response;
+
+	while(response == 'S' || response == 's'){
 	printf("-------------------------------------------------------------------------\n");
-	printf("************Almacenamiento de datos estructurados en memoria*************\n");
-	printf("*********************************27/10/19********************************\n");
+	printf("****************************Compilación con Make*************************\n");
+	printf("*********************************03/11/19********************************\n");
 	printf("*******************************Miller-Marin******************************\n");
 	printf("-------------------------------------------------------------------------\n\n\n");
 	srand(time(NULL));
@@ -42,8 +49,8 @@ int main(){
 	printf("\n");
 
 	id = rand();
-	user.userid = (int)id;
-	printf("Tu userID es: %d",&user.userid);
+	user.userid = (unsigned int)id;
+	//printf("Tu userID es: %d",&user.userid);
 	printf("\n\n");
 	
 	int tipoError = (int)validar(&user);
@@ -53,9 +60,12 @@ int main(){
 	//printf(mensajeError(&tipoError));
 	strcpy(message,mensajeError(&tipoError));
 	mostrarResultados(&user,message);
+	
+		
 
-
+	}
 }
+
 
 void crearUsuario(Usuario_t *u){
 		
@@ -63,28 +73,23 @@ void crearUsuario(Usuario_t *u){
 
 	usuario[0]= tolower(u->nombre[0]);
 
-	for(int i=0; i<strlen(u->apellido);i++){
-	
+	for(int i=0; i<sizeof(u->apellido);i++){
+		
 		if(i == 0){
 			usuario[i+1]=tolower(u->apellido[0]);
 		}else{
 			usuario[i+1]=u->apellido[i];
 		
 		}
-
-	
-	
-	}
-	for(int j = 1; j<strlen(usuario); j++){
-	
-		if(isupper(usuario[j])){
-		
-			usuario[j]=tolower(usuario[j]);
-
+		if(u->apellido[i]=='\0'){
+			usuario[i+1] = '\0';
+			break;
 		}
 
+	
+	
 	}
-	usuario[strlen(usuario)] = '\0';
+	
 	strcpy(u->username,usuario);
 	
 	
@@ -109,15 +114,25 @@ void mostrarResultados(Usuario_t *u, char msg[]){
 	printf("*									*\n");
 	printf("*************************************************************************\n");
 	
-	
+	/*
+	 *aqui va la salida del programa o nuevo ingreso
+	 * */
 
+	do{
+	printf("\n\n");
+	printf("Desea ingresar otro usuario?(S/N):\t");
+	scanf("%c\n", response);
+	}while(response == 'S' || response == 'N' || response == 's' || response == 'n' );
 	
+	if(response == 'S' || response == 's'){ printf("Hasta la proxima XD! ");}else{
+		printf("\n\n\n\n\n\n\n\n\n\n");
+	}
 
 }
 
 char *mensajeError(int *err){
-	
-	
+
+
 	
 	char *msg = malloc(sizeof(char[MAXSTR]));	
 	

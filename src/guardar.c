@@ -2,6 +2,6 @@
 #include<guardar.h>
 
 
-void guardar(Usuario_t *){
-
+void guardar(Usuario_t *lista){
+	printf("Estoyen en guardar.c");
 }
