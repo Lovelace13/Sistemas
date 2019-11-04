@@ -3,5 +3,8 @@
 guardar.h
 
 */
+#include<validar.h>
 
-int guardar(int a, int b);
+
+
+void guardar(Usuario_t *lista);
